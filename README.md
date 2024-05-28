@@ -7,9 +7,7 @@ Cette image Docker est spécialement conçue pour être utilisée lors de compé
 Pour utiliser cette image Docker, vous pouvez exécuter la commande suivante :
 bash```
 docker build -t <nomdelimage> .
-````
-
-Puis
+``` Puis
 bash```
 docker run --privileged -it --name nom_conteneur <votre_image> /bin/bash
 ```

@@ -1,6 +1,6 @@
 FROM kalilinux/kali-rolling
 RUN apt-get update -o Acquire::Retries=3 -o Acquire::http::Timeout="20" \
-    && apt-get install -y python3 sudo wordlists python3-pip git iputils-ping nmap hashcat nano mimikatz \
+    && apt-get install -y python3 sudo wordlists python3-pip git iputils-ping nmap hashcat nano mimikatz curl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 RUN pip3 install flask-unsign setuptools

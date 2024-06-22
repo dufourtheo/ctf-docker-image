@@ -4,6 +4,11 @@ RUN apt-get update -o Acquire::Retries=3 -o Acquire::http::Timeout="20" \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 RUN pip3 install flask-unsign setuptools
+RUN apt-get update \
+    && apt-get install -y libgmp-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+RUN pip3 install gmpy2
 RUN mkdir -p /home/successful/tools \
     && git clone https://github.com/SecureAuthCorp/impacket.git /home/successful/tools/impacket \
     && cd /home/successful/tools/impacket \

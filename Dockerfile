@@ -1,6 +1,6 @@
 FROM kalilinux/kali-rolling
 RUN apt-get update -o Acquire::Retries=3 -o Acquire::http::Timeout="20" \
-    && apt-get install -y python3 sudo wordlists python3-pip git iputils-ping nmap hashcat nano mimikatz curl python3-venv \
+    && apt-get install -y python3 sudo wordlists python3-pip git iputils-ping nmap hashcat nano mimikatz nikto curl python3-venv \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 RUN python3 -m venv /home/successful/venv
@@ -15,10 +15,7 @@ RUN pip install gmpy2
 RUN mkdir -p /home/successful/tools \
     && git clone https://github.com/SecureAuthCorp/impacket.git /home/successful/tools/impacket \
     && cd /home/successful/tools/impacket \
-    && python3 setup.py install
-RUN git clone https://github.com/p0dalirius/ldap2json.git /home/successful/tools/ldap2json \
-    && cd /home/successful/tools/ldap2json \
-    && pip install -r requirements.txt
+    && pip install .
 RUN useradd -m successful \
     && echo "successful:boule" | chpasswd \
     && usermod -aG sudo successful

@@ -34,6 +34,12 @@ RUN git clone https://github.com/ticarpi/jwt_tool /home/successful/tools/jwt_too
     && pip install -r requirements.txt \
     && chown -R successful:successful /home/successful/tools/jwt_tool
 
+# Installation de FinalRecon
+RUN git clone https://github.com/thewhiteh4t/FinalRecon.git /home/successful/tools/finalrecon \
+    && cd /home/successful/tools/finalrecon \
+    && pip install -r requirements.txt \
+    && chown -R successful:successful /home/successful/tools/finalrecon
+
 # Configuration pour permettre l'accès root
 USER root
 WORKDIR /root

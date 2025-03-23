@@ -2,7 +2,7 @@ FROM kalilinux/kali-rolling
 
 # Mise à jour et installation des paquets nécessaires
 RUN apt-get update -o Acquire::Retries=3 -o Acquire::http::Timeout="20" \
-    && apt-get install -y python3 sudo wordlists python3-pip git iputils-ping nmap hashcat nano mimikatz nikto curl python3-venv sqlmap finalrecon \
+    && apt-get install -y python3 sudo wordlists python3-pip git iputils-ping nmap hashcat nano mimikatz nikto curl python3-venv sqlmap finalrecon sherlock \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

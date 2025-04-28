@@ -16,3 +16,8 @@ Puis
   docker run --privileged -it --name nom_conteneur <votre_image> /bin/bash
 ```
 
+Revenir sur le docker 
+
+```
+docker exec -it nom_conteneur /bin/bash
+```

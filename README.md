@@ -7,13 +7,13 @@ Cette image Docker est spécialement conçue pour être utilisée lors de compé
 Pour utiliser cette image Docker, vous pouvez exécuter la commande suivante :
 
 ```bash
-  docker build -t <nomdelimage> .
+  docker build -t successfulkali .
 ```
 
 Puis 
 
 ```bash
-  docker run --privileged -it --name nom_conteneur <votre_image> /bin/bash
+  docker run --privileged -it --name nom_conteneur successfulkali /bin/bash
 ```
 
 Revenir sur le docker 

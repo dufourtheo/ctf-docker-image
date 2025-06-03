@@ -34,6 +34,22 @@ RUN git clone https://github.com/ticarpi/jwt_tool /home/successful/tools/jwt_too
     && pip install -r requirements.txt \
     && chown -R successful:successful /home/successful/tools/jwt_tool
 
+# Installation de VSCodium, semgrep, uuidtool
+RUN apt-get update \
+    && apt-get install -y wget gnupg software-properties-common \
+    && wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
+        | gpg --dearmor \
+        | tee /usr/share/keyrings/vscodium-archive-keyring.gpg > /dev/null \
+    && echo 'deb [arch=amd64,arm64 signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg] https://download.vscodium.com/debs vscodium main' \
+        > /etc/apt/sources.list.d/vscodium.list \
+    && apt-get update \
+    && apt-get install -y codium pipx git \
+    && pipx ensurepath \
+    && pipx install semgrep \
+    && git clone https://github.com/semgrep/semgrep-rules.git /home/successful/semgrep-rules \
+    && pipx install git+https://github.com/crazycat256/uuidtool \
+    && ln -s /root/.local/bin/uuidtool /usr/local/bin/uuidtool \
+    && chown -R successful:successful /home/successful/semgrep-rules
 
 # Configuration pour permettre l'accès root
 USER root
